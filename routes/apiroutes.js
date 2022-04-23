@@ -24,7 +24,7 @@ router.post('/notes', (req,res) => {
             title,
             text,
         };
-        utility.writeToFile(newNote, '/db/db.json');
+        utility.writeToFile('./db/db.json',newNote );
 
         const response = {
             status: 'success',
