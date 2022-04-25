@@ -8,9 +8,9 @@ const readFromFile = util.promisify(fs.readFile);
 
 
 router.get(`/notes`, (req,res) => {
-    console.info(`${req.method} request recieved for notes`);
-
-    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+    readFromFile('./db/db.json').then((data) => 
+    // console.log(JSON.parse(data)))
+    res.json(JSON.parse(data)));
     
 });
 
@@ -24,7 +24,7 @@ router.post('/notes', (req,res) => {
             title,
             text,
         };
-        utility.writeToFile('./db/db.json',newNote );
+        utility.readAndAppend(newNote,'db/db.json' );
 
         const response = {
             status: 'success',
